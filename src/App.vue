@@ -126,7 +126,7 @@
         },
         {
           icon: 'mdi-github',
-          to: 'https://www.github.com'
+          to: 'https://github.com/artemisclyde'
         }
       ],
     }),
