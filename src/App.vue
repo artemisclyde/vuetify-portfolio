@@ -83,13 +83,14 @@
           >
             <v-card-text>
               <v-btn
-                v-for="icon in icons"
-                :key="icon"
+                v-for="button in socialButtons"
+                :key="button"
+                :href="button.to"
                 class="mx-4 white--text"
                 icon
               >
                 <v-icon size="24px">
-                  {{ icon }}
+                  {{ button.icon }}
                 </v-icon>
               </v-btn>
             </v-card-text>
@@ -113,16 +114,20 @@
   export default {
     data: () => ({
       links: [
-        'Dashboard',
-        'Messages',
-        'Profile',
-        'Updates',
+        'About Me',
+        'Qualifications',
+        'Extras',
+        'Contact',
       ],
-      icons: [
-        'mdi-facebook',
-        'mdi-twitter',
-        'mdi-linkedin',
-        'mdi-instagram',
+      socialButtons: [
+        {
+          icon: 'mdi-xing',
+          to: 'https://en.wikipedia.org/wiki/XING'
+        },
+        {
+          icon: 'mdi-github',
+          to: 'https://www.github.com'
+        }
       ],
     }),
   }
