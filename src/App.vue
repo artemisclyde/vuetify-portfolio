@@ -2,8 +2,8 @@
   <v-app id="inspire">
     <v-app-bar
       app
-      color="white"
       flat
+      class="white"
     >
       <v-avatar
         :color="$vuetify.breakpoint.smAndDown ? 'grey darken-1' : 'transparent'"
@@ -25,13 +25,13 @@
 
       <v-avatar
         class="hidden-sm-and-down"
-        color="grey darken-1 shrink"
+        color="seconday darken-1 shrink"
         size="32"
       ></v-avatar>
     </v-app-bar>
 
-    <v-main class="grey lighten-3">
-      <v-container>
+    <v-main class="gradient-background">
+      <v-container class="main-content">
         <v-row>
           <v-col
             cols="12"
@@ -49,12 +49,18 @@
             cols="12"
             sm="8"
           >
-            <v-sheet
-              min-height="70vh"
-              rounded="lg"
+            <v-hover
+            v-slot="{ hover }"
             >
-              <!--  -->
-            </v-sheet>
+              <v-sheet
+                min-height="70vh"
+                rounded="lg"
+                :elevation="hover ? 12 : 1"
+              >
+                <!--  -->
+                <div></div>
+              </v-sheet>
+            </v-hover>
           </v-col>
 
           <v-col
@@ -71,41 +77,39 @@
         </v-row>
       </v-container>
       <v-footer
-          app
-          dark
-          padless
-          fixed
+        dark
+        padless
+        absolute
+        class="primary lighten-2"
+      >
+        <v-card
+          flat
+          tile
         >
-          <v-card
-            flat
-            tile
-            class="white--text text-center"
-          >
-            <v-card-text>
-              <v-btn
-                v-for="button in socialButtons"
-                :key="button"
-                :href="button.to"
-                class="mx-4 white--text"
-                icon
-              >
-                <v-icon size="24px">
-                  {{ button.icon }}
-                </v-icon>
-              </v-btn>
-            </v-card-text>
+          <v-card-title>
+            <strong class="subheading">Development is fun fun fun fun fuuuun.</strong>
 
-            <v-card-text class="white--text pt-0">
-            Aaron Kohn is a good developer.
-            </v-card-text>
+            <v-spacer></v-spacer>
 
-            <v-divider></v-divider>
+            <v-btn
+              v-for="button in socialButtons"
+              :key="button"
+              :href="button.to"
+              class="mx-4"
+              dark
+              icon
+            >
+              <v-icon size="24px">
+                {{ button.icon }}
+              </v-icon>
+            </v-btn>
+          </v-card-title>
 
-            <v-card-text class="white--text">
-              {{ new Date().getFullYear() }} — <strong>Aaron Kohn</strong>
-            </v-card-text>
-          </v-card>
-        </v-footer>
+          <v-card-text class="py-2 white--text text-center">
+            {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
+          </v-card-text>
+        </v-card>
+      </v-footer>
     </v-main>
   </v-app>
 </template>
@@ -134,8 +138,18 @@
 </script>
 <style scoped lang="scss">
 .v-footer > .v-card {
-  background-color: $primary !important;
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
+  background-color: inherit;
+  border-top: 1px solid white;
+}
+.gradient-background {
+  background: rgb(2,0,36);
+  background: linear-gradient(180deg, white 5%, rgb(99, 147, 130) 90%);
 }
 
+.main-content {
+  min-height: 1000px;
+  height: 100%;
+}
 </style>
